@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import request from 'superagent';
 import SearchBar from './SearchBar';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -35,7 +36,7 @@ class NavBar extends Component{
                         </ul>
                         </li>
                     </ul>
-                    <SearchBar getTickets={getTickets} update={this.props.update}/>
+                    <SearchBar onSubmitClick={this.props.onSubmitClick}/>
                     <ul className="nav navbar-nav navbar-right">
                         <li><a href="#">Link</a></li>
                         <li className="dropdown">
@@ -56,15 +57,29 @@ class NavBar extends Component{
     }
 }
 
-function getTickets(from,to){
-    console.log(`From ${from} To ${to}`);
-    request
-    .get('http://localhost:8809')
-    .query({f:from,t:to,d:'2017-03-18',s:false})
-    .end((err, res)=>{
-        this.update(res.body.data);
-    });
+
+const mapStateToProps = state => {
+  return {}
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSubmitClick: (from,to,date,isStudent)=>{
+        console.log(`from ${from} to ${to} date ${date} isStudent ${isStudent}`);
+        request
+        .get('http://localhost:8809')
+        .query({f:from,t:to,d:date,s:isStudent})
+        .end((err, res)=>{
+            dispatch({
+                type: 'SET_TICKETS',
+                data:res.body.data
+            }); 
+        });
+    }
+  }
 }
 
-
-export default NavBar;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavBar);

@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 
-class List extends Component{
-    render(){
-        let tickets = this.props.tickets;
-        let count = 0;
-        return(
-            <ul className="list-group">
-                {tickets.map(t=>(
-                    <TicketItem key={count++} trainno={t.train_code} 
-                    time={t.start_time} take={t.interval} from={t.from_name} to={t.to_name} 
-                    c1={t.seat_first_class} c2={t.seat_second_class} c3={t.seat_stand} />
-                ))}
-            </ul>
-        );
-    }
+const List = ({tickets})=>{
+    let count = 0;
+    return(
+        <ul className="list-group">
+            {tickets.map(t=>(
+                <TicketItem key={count++} trainno={t.train_code} 
+                time={t.start_time} take={t.interval} from={t.from_name} to={t.to_name} 
+                c1={t.seat_first_class} c2={t.seat_second_class} c3={t.seat_stand} />
+            ))}
+        </ul>
+    );
 }
 
 const ColorLabel = (props)=>{
@@ -48,4 +46,17 @@ const TicketItem = (props)=>{
     );
 }
 
-export default List;
+const mapStateToProps = state => {
+  return {
+    tickets: state.tickets
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {}
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(List);

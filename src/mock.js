@@ -30,6 +30,16 @@ export default {
         seat_second_class : '有',
         seat_stand : '有',
     },
+    {
+        train_code : 'G6315',
+        start_time : '9:40',
+        interval : '00:36',
+        from_name : '广州南',
+        to_name : '深圳北',
+        seat_first_class : '有', 
+        seat_second_class : '有',
+        seat_stand : '有',
+    },
     ],
 
 };
