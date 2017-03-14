@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import request from 'superagent';
 import SearchBar from './SearchBar';
+import {loadTickets} from '../actions';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap';
 
@@ -57,25 +57,14 @@ class NavBar extends Component{
     }
 }
 
-
+//Connect the state and handlers    
 const mapStateToProps = state => {
   return {}
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmitClick: (from,to,date,isStudent)=>{
-        console.log(`from ${from} to ${to} date ${date} isStudent ${isStudent}`);
-        request
-        .get('http://localhost:8809')
-        .query({f:from,t:to,d:date,s:isStudent})
-        .end((err, res)=>{
-            dispatch({
-                type: 'SET_TICKETS',
-                data:res.body.data
-            }); 
-        });
-    }
+    onSubmitClick:loadTickets(dispatch)
   }
 }
 

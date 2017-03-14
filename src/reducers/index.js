@@ -1,6 +1,6 @@
-import mock from '../mock';
+// import mock from '../mock';
 
-const ticketServices = (state={tickets:mock.tickets},action)=>{
+const ticketServices = (state={},action)=>{
     console.log(`Reducer ticket-ticketServices called with action ${action.type}`);
     switch(action.type){
         case 'SET_TICKETS':

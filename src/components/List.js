@@ -7,7 +7,7 @@ const List = ({tickets})=>{
     let count = 0;
     return(
         <ul className="list-group">
-            {tickets.map(t=>(
+            {tickets===undefined?'':tickets.map(t=>(
                 <TicketItem key={count++} trainno={t.train_code} 
                 time={t.start_time} take={t.interval} from={t.from_name} to={t.to_name} 
                 c1={t.seat_first_class} c2={t.seat_second_class} c3={t.seat_stand} />
