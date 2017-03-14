@@ -4,6 +4,7 @@ import 'bootstrap';
 
 const SearchBar = ({onSubmitClick})=>{
     let from,to,date,student;
+    let today = new Date().toISOString().substr(0,10);
     return(
     <form className="navbar-form navbar-left">
         <div className="form-group">
@@ -18,6 +19,7 @@ const SearchBar = ({onSubmitClick})=>{
             <input type="text" 
                 ref={i=>{date = i}} 
                 className="form-control" 
+                defaultValue={today}
                 placeholder="Date YYYY-MM-DD" />
             <input type="checkbox" 
                 ref={i=>{student = i}} 

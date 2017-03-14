@@ -1,7 +1,9 @@
 import React from 'react';
-import NavBar from './components/NavBar';
-import List from './components/List';
+import NavBar from './containers/NavBar';
+import TicketList from './containers/TicketList';
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap';
 import './App.css';
 
 const App = ()=>{
@@ -12,7 +14,7 @@ const App = ()=>{
         <h2>STickey App</h2>
       </div>
       <NavBar />
-      <List />
+      <TicketList />
     </div>
   );
 }
