@@ -1,14 +1,8 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap';
+import {formatDate} from '../util';
 
 const SearchBar = ({onSubmitClick})=>{
     let from,to,date,student;
-    let today = new Date();
-    let yyyy = today.getFullYear();
-    let mm = today.getMonth()+1;
-    let dd = today.getDate()+1;
-    let tomorrow = `${yyyy}-${mm>10?mm:'0'+mm}-${dd>10?dd:'0'+dd}`;
     return(
     <form className="navbar-form navbar-left">
         <div className="input-group">
@@ -19,7 +13,7 @@ const SearchBar = ({onSubmitClick})=>{
                 <input type="text" ref={i=>{to = i}} 
                     className="form-control" placeholder="To" />
                     
-                <input type="text" ref={i=>{date = i}} defaultValue={tomorrow}
+                <input type="text" ref={i=>{date = i}} defaultValue={formatDate(new Date(),'@yyyy-@mm-@dd')}
                     className="form-control" placeholder="Date YYYY-MM-DD" />
 
                 <span className="input-group-addon"> 
