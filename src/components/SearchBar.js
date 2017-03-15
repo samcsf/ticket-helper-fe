@@ -7,7 +7,7 @@ const SearchBar = ({onSubmitClick})=>{
     let today = new Date();
     let yyyy = today.getFullYear();
     let mm = today.getMonth()+1;
-    let dd = today.getDate();
+    let dd = today.getDate()+1;
     let tomorrow = `${yyyy}-${mm>10?mm:'0'+mm}-${dd>10?dd:'0'+dd}`;
     return(
     <form className="navbar-form navbar-left">
