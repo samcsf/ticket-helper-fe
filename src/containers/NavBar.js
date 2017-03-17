@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import SearchBar from '../components/SearchBar';
+import FilterBar from './FilterBar';
 import {loadTickets} from '../actions';
 
 class NavBar extends Component{
@@ -18,7 +19,16 @@ class NavBar extends Component{
                         <a className="navbar-brand" href="#">STickey</a>
                     </div>    
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <SearchBar onSubmitClick={this.props.onSubmitClick}/>
+                        <table>
+                        <tbody>
+                        <tr><td>
+                            <SearchBar onSubmitClick={this.props.onSubmitClick}/>
+                        </td></tr>
+                        <tr><td>
+                            <FilterBar filters={{EXACT_MATCH_FILTER:true,IN_STORE_FILTER:false,G_ONLY_FILTER:true}} onCheckChange={()=>console.log('!')}/>
+                        </td></tr>
+                        </tbody>
+                        </table>
                     </div>
                     </div>
             </nav>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {formatDate} from '../util';
+import {formatDate,addDay} from '../util';
 
 const SearchBar = ({onSubmitClick})=>{
     let from,to,date,student;
@@ -13,7 +13,7 @@ const SearchBar = ({onSubmitClick})=>{
                 <input type="text" ref={i=>{to = i}} 
                     className="form-control" placeholder="To" />
                     
-                <input type="text" ref={i=>{date = i}} defaultValue={formatDate(new Date(),'@yyyy-@mm-@dd')}
+                <input type="text" ref={i=>{date = i}} defaultValue={formatDate(addDay(new Date(),1),'@yyyy-@mm-@dd')}
                     className="form-control" placeholder="Date YYYY-MM-DD" />
 
                 <span className="input-group-addon"> 
