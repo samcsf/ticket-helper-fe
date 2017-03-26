@@ -14,3 +14,10 @@ export const loadTickets = dispatch=> (from,to,date,isStudent)=>{
         dispatch(setTickets(res.body.data));
     });
 };
+
+export const toggleFilter = dispatch => filter =>{
+    dispatch({
+        type: 'SET_FILTER',
+        filter 
+    });
+};

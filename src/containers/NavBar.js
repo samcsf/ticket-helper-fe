@@ -25,7 +25,7 @@ class NavBar extends Component{
                             <SearchBar onSubmitClick={this.props.onSubmitClick}/>
                         </td></tr>
                         <tr><td>
-                            <FilterBar filters={{EXACT_MATCH_FILTER:true,IN_STORE_FILTER:false,G_ONLY_FILTER:true}} onCheckChange={()=>console.log('!')}/>
+                            <FilterBar />
                         </td></tr>
                         </tbody>
                         </table>
