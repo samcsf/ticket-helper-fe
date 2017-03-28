@@ -22,7 +22,7 @@ class NavBar extends Component{
                         <table>
                         <tbody>
                         <tr><td>
-                            <SearchBar onSubmitClick={this.props.onSubmitClick}/>
+                            <SearchBar keys={this.props.keys} onSubmitClick={this.props.onSubmitClick}/>
                         </td></tr>
                         <tr><td>
                             <FilterBar />
@@ -38,7 +38,9 @@ class NavBar extends Component{
 
 //Connect the state and handlers    
 const mapStateToProps = state => {
-  return {}
+  return {
+      keys : state.keys
+  }
 };
 
 const mapDispatchToProps = dispatch => {

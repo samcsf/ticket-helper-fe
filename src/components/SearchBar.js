@@ -1,24 +1,23 @@
 import React from 'react';
-import {formatDate,addDay} from '../util';
 
-const SearchBar = ({onSubmitClick})=>{
+const SearchBar = ({keys,onSubmitClick})=>{
     let from,to,date,student;
     return(
     <form className="navbar-form navbar-left">
         <div className="input-group">
             <div className="input-group-btn">
-                <input type="text" ref={i=>{from = i}} 
+                <input type="text" ref={i=>{from = i}} defaultValue={keys.from}
                     className="form-control" placeholder="From" />
                     
-                <input type="text" ref={i=>{to = i}} 
+                <input type="text" ref={i=>{to = i}} defaultValue={keys.to}
                     className="form-control" placeholder="To" />
                     
-                <input type="text" ref={i=>{date = i}} defaultValue={formatDate(addDay(new Date(),1),'@yyyy-@mm-@dd')}
+                <input type="text" ref={i=>{date = i}} defaultValue={keys.date}
                     className="form-control" placeholder="Date YYYY-MM-DD" />
 
                 <span className="input-group-addon"> 
                     Student{' '}
-                    <input type="checkbox" ref={i=>{student = i}} />
+                    <input type="checkbox" defaultChecked={keys.isStudent} ref={i=>{student = i}} />
                 </span>
                 
                 <span className="input-group-btn">

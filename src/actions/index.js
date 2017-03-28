@@ -7,6 +7,10 @@ const setTickets = data =>({
 
 export const loadTickets = dispatch=> (from,to,date,isStudent)=>{
     console.log(`from ${from} to ${to} date ${date} isStudent ${isStudent}`);
+    dispatch({
+        type : 'SET_KEYS',
+        keys : {from,to,date,isStudent}
+    });
     request
     .get('http://localhost:8809/query-ticket')
     .query({f:from,t:to,d:date,s:isStudent})
